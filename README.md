@@ -1,21 +1,23 @@
 # arm-beats
 
+![](https://badgen.net/github/release/vrince/arm-beats)
+
+
 Automated Elastic `filebeat`, `metricbeat`, `heartbeat` & `packagebeat` builds for `linux/armv7` & `linux/armv6` on `debian buster`.
 
 ## Goal
 
-Currently elastic do not provide any `arm32` (`armv7` / `armv6`) builds, this repo provides those builds.
+Currently elasticsearch team do not provide any `arm32` (`armv7` / `armv6`) builds, this repo provides those.
 
-Originally this is meant to make `filebeat` work on `raspberry pi`, being at it added more `beats`.
+Originally this is meant to make `filebeat` work on `raspberry pi`.
+
+[official builds](https://www.elastic.co/downloads/past-releases)
 
 ### Builds
 
 [![CI](https://github.com/vrince/arm-beats/actions/workflows/beats.yml/badge.svg)](https://github.com/vrince/arm-beats/actions/workflows/beats.yml)
 
-[![](http://github-actions.40ants.com/vrince/arm-beats/matrix.svg)](https://github.com/vrince/arm-beats)
-## How it works
-
-Use emulated (`qemu`) multi-arch capability of docker. Performance is really not that great, so those builds only perform `go get` to build necessary binary file. Finally official elasticsearch corresponding beat package is patch by swapping main binary.
+Uses emulated (`qemu`) multi-arch capability of docker. Performance is really not that great, so those builds only perform `go get` to build necessary binary file. Finally official elasticsearch official  (arm64) corresponding beat package is patch by swapping the main binary.
 
 ## Reference
 
