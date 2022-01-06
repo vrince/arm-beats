@@ -13,7 +13,24 @@ Originally this is meant to make `filebeat` work on `raspberry pi`.
 
 [official builds](https://www.elastic.co/downloads/past-releases)
 
-### Builds
+## Run `filebeat` on a rasperry pi 3
+
+```bash
+wget https://github.com/vrince/arm-beats/releases/download/v7.16.2/filebeat-7.16.2-linux-armv7l.tar.gz
+tar -xf filebeat-7.16.2-linux-armv7l.tar.gz
+cd filebeat-7.16.2-linux-armv7l
+./filebeat version
+```
+
+This should return :
+
+```bash
+filebeat version 7.16.2 (arm), libbeat 7.16.2 [unknown built unknown]
+```
+
+For more infor about how to configure `filebeat` --> [documentation](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)
+
+## Builds
 
 [![CI](https://github.com/vrince/arm-beats/actions/workflows/beats.yml/badge.svg)](https://github.com/vrince/arm-beats/actions/workflows/beats.yml)
 
