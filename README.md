@@ -13,12 +13,12 @@ Originally this is meant to make `filebeat` work on `raspberry pi`.
 
 [official builds](https://www.elastic.co/downloads/past-releases)
 
-## Run `filebeat` on a rasperry pi 3
+## Run `filebeat` on a raspberry pi 3
 
 ```bash
-wget https://github.com/vrince/arm-beats/releases/download/v7.16.2/filebeat-7.16.2-linux-armv7l.tar.gz
-tar -xf filebeat-7.16.2-linux-armv7l.tar.gz
-cd filebeat-7.16.2-linux-armv7l
+wget https://github.com/vrince/arm-beats/releases/download/v7.16.2\3/filebeat-7.16.3-linux-armv7l.tar.gz
+tar -xf filebeat-7.16.3-linux-armv7l.tar.gz
+cd filebeat-7.16.3-linux-armv7l
 ./filebeat version
 ```
 
