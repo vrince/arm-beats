@@ -13,22 +13,39 @@ Originally this is meant to make `filebeat` work on `raspberry pi`.
 
 [official builds](https://www.elastic.co/downloads/past-releases)
 
-## Run `filebeat` on a raspberry pi 3
+## Run `filebeat` on a raspberry pi
 
 ```bash
-wget https://github.com/vrince/arm-beats/releases/download/v7.16.2\3/filebeat-7.16.3-linux-armv7l.tar.gz
+wget https://github.com/vrince/arm-beats/releases/download/v7.16.3/filebeat-7.16.3-linux-armv7l.tar.gz
 tar -xf filebeat-7.16.3-linux-armv7l.tar.gz
 cd filebeat-7.16.3-linux-armv7l
-./filebeat version
+file ./filebeat
 ```
 
-This should return :
+Should return:
 
 ```bash
-filebeat version 7.16.2 (arm), libbeat 7.16.2 [unknown built unknown]
+./filebeat: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, Go BuildID=q4tFca9OleP0Dj0JFsYO/wQvX_IvIiVb7CA7NFq-6/-Rsiwc2soS0qHYJ-YXvB/uOnOPHVTGBXMRzHgpC_p, BuildID[sha1]=0e3df053441d84a4a3e6aa3de827bd6984c2dd3a, not stripped
 ```
 
-For more infor about how to configure `filebeat` --> [documentation](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)
+For more information about how to configure `filebeat` --> [documentation](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)
+
+## Run `metricbeat` on raspberry pi
+
+```bash
+wget https://github.com/vrince/arm-beats/releases/download/v7.16.3/metricbeat-7.16.3-linux-armv7l.tar.gz
+tar -xf metricbeat-7.16.3-linux-armv7l.tar.gz
+cd metricbeat-7.16.3-linux-armv7l
+file ./metricbeat
+```
+
+Should return:
+
+```bash
+./metricbeat: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, Go BuildID=KYjs2CEqzT9uxFYhahi8/A1OvIW-ClpB3kNBN-iU3/QZUh6d5es2uGo50jjYgF/i5J85A49bJtxHOYThpA7, BuildID[sha1]=6e5aa658d895ea6c01e21286b29faaedd658803f, not stripped
+```
+
+For more information about how to configure `metricbeat` --> [documentation](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-overview.html)
 
 ## Builds
 
