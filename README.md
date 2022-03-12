@@ -3,7 +3,7 @@
 ![](https://badgen.net/github/release/vrince/arm-beats)
 
 
-Automated Elastic `filebeat`, `metricbeat`, `heartbeat` & `packagebeat` builds for `linux/armv7` & `linux/armv6` on `debian buster`.
+Automated Elastic `filebeat`, `metricbeat`, `heartbeat` & `packagebeat` builds for **linux/armv7 & linux/armv6 32bits**.
 
 ## Goal
 
