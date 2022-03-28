@@ -16,9 +16,9 @@ Originally this is meant to make `filebeat` work on `raspberry pi`.
 ## Run `filebeat` on a raspberry pi
 
 ```bash
-wget https://github.com/vrince/arm-beats/releases/download/v7.16.3/filebeat-7.16.3-linux-armv7l.tar.gz
-tar -xf filebeat-7.16.3-linux-armv7l.tar.gz
-cd filebeat-7.16.3-linux-armv7l
+wget https://github.com/vrince/arm-beats/releases/download/v8.1.0/filebeat-8.1.0-linux-armv7l.tar.gz
+tar -xf filebeat-8.1.0-linux-armv7l.tar.gz
+cd filebeat-8.1.0-linux-armv7l
 file ./filebeat
 ```
 
@@ -33,9 +33,9 @@ For more information about how to configure `filebeat` --> [documentation](https
 ## Run `metricbeat` on raspberry pi
 
 ```bash
-wget https://github.com/vrince/arm-beats/releases/download/v7.16.3/metricbeat-7.16.3-linux-armv7l.tar.gz
-tar -xf metricbeat-7.16.3-linux-armv7l.tar.gz
-cd metricbeat-7.16.3-linux-armv7l
+wget https://github.com/vrince/arm-beats/releases/download/v8.1.0/metricbeat-8.1.0-linux-armv7l.tar.gz
+tar -xf metricbeat-8.1.0-linux-armv7l.tar.gz
+cd metricbeat-8.1.0-linux-armv7l
 file ./metricbeat
 ```
 
