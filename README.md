@@ -7,9 +7,9 @@ Automated Elastic `filebeat`, `metricbeat`, `heartbeat` & `packagebeat` builds f
 
 ## Goal
 
-Currently elasticsearch team do not provide any `arm32` (`armv7` / `armv6`) builds, this repo provides those.
+Currently elasticsearch team do not provide any `arm32` (`armv7` / `armv6`) builds for `filebeat`, `metricbeat`, `heartbeat` & `packagebeat` this repository provides those.
 
-Originally this is meant to make `filebeat` work on `raspberry pi`.
+[latest builds](https://github.com/vrince/arm-beats/releases)
 
 [official builds](https://www.elastic.co/downloads/past-releases)
 
