@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         arch: [armv7]
-        beat: [filebeat, metricbeat, packetbeat, heartbeat]
+        beat: [filebeat, metricbeat, heartbeat]
 
     runs-on: ubuntu-latest
     container:
