@@ -19,12 +19,10 @@ jobs:
 
     strategy:
       matrix:
-        arch: [armv6, armv7]
+        arch: [armv7]
         beat: [filebeat, metricbeat, packetbeat, heartbeat]
-        distro: [buster]
-        go: [1.17.5]
 
-    runs-on: ubuntu-latest
+    runs-on: golang:1.20.11
 
     name: ${{ matrix.beat }} ${{ matrix.arch }}
 
@@ -40,21 +38,15 @@ jobs:
         id: build-beat
         with:
           arch: ${{ matrix.arch }}
-          distro: ${{ matrix.distro }}
 
           githubToken: ${{ github.token }}
 
-          install: |
-            apt-get update -q -y
-            apt-get install -q -y wget jq curl git build-essential libsystemd-dev
-
           run: |
-            ./install-go.sh ${{ matrix.go }} armv6l
-            ./build.sh ${{ matrix.beat }} ${{ steps.vars.outputs.tag }}
+            ./build.sh ${{ matrix.beat }} ${{ matrix.arch }} ${{ steps.vars.outputs.tag }}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.beat }}-${{ matrix.arch }}-${{ matrix.distro }}
+          name: ${{ matrix.beat }}-${{ matrix.arch }}
           path: ${{ matrix.beat }}-*.tar.gz
 
       - name: Release
