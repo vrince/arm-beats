@@ -35,13 +35,9 @@ jobs:
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
-      - name: Build beat (on arch)
+      - name: Build beat
         id: build-beat
-        with:
-          arch: ${{ matrix.arch }}
-          githubToken: ${{ github.token }}
-          run: |
-            ./build.sh ${{ matrix.beat }} ${{ matrix.arch }} ${{ steps.vars.outputs.tag }}
+        run: ./build.sh ${{ matrix.beat }} ${{ matrix.arch }} ${{ steps.vars.outputs.tag }}
 
       - uses: actions/upload-artifact@v2
         with:
