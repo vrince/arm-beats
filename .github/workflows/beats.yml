@@ -31,12 +31,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set tag
-        run: echo "git_tag=:${GITHUB_REF#refs/*/}" >> $GITHUB_STATE
-
-      - name: Build beat
+      - name: Build beat (tag)
         id: build-beat
-        run: ./build.sh ${{ matrix.beat }} ${{ matrix.arch }} $git_tag
+        if: "startsWith(github.ref, 'refs/tags/')"
+        run: ./build.sh ${{ matrix.beat }} ${{ matrix.arch }}
+
+      - name: Build beat (master)
+        id: build-beat
+        if: "!startsWith(github.ref, 'refs/tags/')"
+        run: ./build.sh ${{ matrix.beat }} ${{ matrix.arch }} master
 
       - uses: actions/upload-artifact@v2
         if: startsWith(github.ref, 'refs/tags/')

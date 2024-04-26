@@ -3,11 +3,14 @@
 #set -e
 BEAT="${1:-filebeat}"
 ARCH="${2:-armv7l}"
-BRANCH="${3}"
+REF_NAME="${3}"
 
-TAG=$(git describe --tags --exact-match 2> /dev/null)
+if [[ -n ${GITHUB_REF_NAME} ]] ; then
+    BRANCH=${GITHUB_REF_NAME}
+    echo "Using GITHUB_REF_NAME(${BRANCH})"
+fi
 
-if [[ -z ${TAG} ]] ; then
+if [[ -z ${BRANCH} ]] ; then
     BRANCH="master"
     echo "Using default branch(${BRANCH})"
 fi
