@@ -41,7 +41,12 @@ rm -rf "${GOPATH}/bin"
 cd "${SRC}/beats/${BEAT}"
 env GOOS=linux GOARCH=arm go install -v -a ./...
 
-echo "Patching package"
+if [[ -z ${TAG} ]] ; then
+    ls -al ${GOPATH}/bin/linux_arm/${BEAT}
+    exit 0
+fi
+
+echo "Patching package version(${VERSION})"
 
 SRC_ARCHIVE="${BEAT}-${VERSION}-linux-arm64"
 DEST_ARCHIVE="${BEAT}-${VERSION}-linux-${ARCH}"
@@ -49,7 +54,7 @@ DEST_ARCHIVE="${BEAT}-${VERSION}-linux-${ARCH}"
 echo "${SRC_ARCHIVE} --> ${DEST_ARCHIVE}"
 
 cd "${SRC}"
-wget -q -N "https://artifacts.elastic.co/downloads/beats/${BEAT}/${SRC_ARCHIVE}.tar.gz"
+wget "https://artifacts.elastic.co/downloads/beats/${BEAT}/${SRC_ARCHIVE}.tar.gz"
 tar -xf "${SRC_ARCHIVE}.tar.gz"
 mv "${SRC_ARCHIVE}" "${DEST_ARCHIVE}"
 cp -f "${GOPATH}/bin/linux_arm/${BEAT}" "${DEST_ARCHIVE}/${BEAT}"
