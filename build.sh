@@ -15,6 +15,13 @@ if [[ -z ${BRANCH} ]] ; then
     echo "Using default branch(${BRANCH})"
 fi
 
+
+GIT_TAG=$(git describe --exact-match --abbrev=0)
+
+echo "Git tag(${GIT_TAG})"
+
+exit 1
+
 VERSION="${BRANCH:1}"
 SRC=$(pwd)
 
