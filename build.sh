@@ -3,14 +3,16 @@
 #set -e
 BEAT="${1:-filebeat}"
 ARCH="${2:-armv7l}"
-TAG="${3}"
+BRANCH="${3}"
 
-if [[ -z ${TAG} || ${TAG} == "master" ]] ; then
-    TAG="v8.11.4"
-    echo "Using default tag(${TAG})"
+TAG=$(git describe --tags --exact-match 2> /dev/null)
+
+if [[ -z ${TAG} ]] ; then
+    BRANCH="master"
+    echo "Using default branch(${BRANCH})"
 fi
 
-VERSION="${TAG:1}"
+VERSION="${BRANCH:1}"
 SRC=$(pwd)
 
 echo "Setup"
@@ -24,10 +26,10 @@ go version
 go tool dist list | grep linux
 
 if [[ ! -d beats ]] ; then
-    echo "Cloning elastic/beats git tag(${TAG})"
-    git clone --quiet --single-branch --branch="${TAG}" --depth=1 "https://github.com/elastic/beats.git"
+    echo "Cloning elastic/beats git branch(${BRANCH})"
+    git clone --quiet --single-branch --branch="${BRANCH}" --depth=1 "https://github.com/elastic/beats.git"
     cd "${SRC}/beats"
-    git checkout --quiet --detach "${TAG}"
+    git checkout --quiet --detach "${BRANCH}"
     git describe --tags
 fi
 
