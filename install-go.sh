@@ -1,5 +1,5 @@
 #!/bin/bash
-GO_VERSION=${1:-1.17.5}
+GO_VERSION=${1:-1.20.11}
 GO_ARCH=${2:amd64}
 FORCE=${3}
 

@@ -19,12 +19,12 @@ jobs:
 
     strategy:
       matrix:
-        arch: [armv6, armv7]
-        beat: [filebeat, metricbeat, packetbeat, heartbeat]
-        distro: [buster]
-        go: [1.17.5]
+        arch: [armv7]
+        beat: [filebeat, metricbeat, heartbeat]
 
     runs-on: ubuntu-latest
+    container:
+      image: golang:1.20.11
 
     name: ${{ matrix.beat }} ${{ matrix.arch }}
 
@@ -32,29 +32,16 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set tag
-        id: vars
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+        run: echo "git_tag=:${GITHUB_REF#refs/*/}" >> $GITHUB_STATE
 
-      - uses: uraimo/run-on-arch-action@v2.1.1
-        name: Build beat (on arch)
+      - name: Build beat
         id: build-beat
-        with:
-          arch: ${{ matrix.arch }}
-          distro: ${{ matrix.distro }}
-
-          githubToken: ${{ github.token }}
-
-          install: |
-            apt-get update -q -y
-            apt-get install -q -y wget jq curl git build-essential libsystemd-dev
-
-          run: |
-            ./install-go.sh ${{ matrix.go }} armv6l
-            ./build.sh ${{ matrix.beat }} ${{ steps.vars.outputs.tag }}
+        run: ./build.sh ${{ matrix.beat }} ${{ matrix.arch }} $git_tag
 
       - uses: actions/upload-artifact@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: ${{ matrix.beat }}-${{ matrix.arch }}-${{ matrix.distro }}
+          name: ${{ matrix.beat }}-${{ matrix.arch }}
           path: ${{ matrix.beat }}-*.tar.gz
 
       - name: Release

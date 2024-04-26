@@ -3,7 +3,7 @@
 ![](https://badgen.net/github/release/vrince/arm-beats)
 [![CI](https://github.com/vrince/arm-beats/actions/workflows/beats.yml/badge.svg)](https://github.com/vrince/arm-beats/actions/workflows/beats.yml)
 
-Automated Elastic `filebeat`, `metricbeat`, `heartbeat` & `packagebeat` builds for **linux/armv7 & linux/armv6 32bits**.
+Automated Elastic `filebeat`, `metricbeat`, `heartbeat` & `packagebeat` builds for **linux/armv7 32bits**.
 
 ## Goal
 
@@ -16,9 +16,9 @@ Currently elasticsearch team do not provide any **arm 32bits** (armv7 / armv6) b
 ## Run `filebeat` on a raspberry pi
 
 ```bash
-wget https://github.com/vrince/arm-beats/releases/download/v8.3.3/filebeat-8.3.3-linux-armv7l.tar.gz
-tar -xf filebeat-8.3.3-linux-armv7l.tar.gz
-cd filebeat-8.3.3-linux-armv7l
+wget https://github.com/vrince/arm-beats/releases/download/v8.11.4/filebeat-8.11.4-linux-armv7l.tar.gz
+tar -xf filebeat-8.11.4-linux-armv7l.tar.gz
+cd filebeat-8.11.4-linux-armv7l
 file ./filebeat
 ```
 
@@ -33,9 +33,9 @@ For more information about how to configure `filebeat` --> [documentation](https
 ## Run `metricbeat` on raspberry pi
 
 ```bash
-wget https://github.com/vrince/arm-beats/releases/download/v8.3.3/metricbeat-8.3.3-linux-armv7l.tar.gz
-tar -xf metricbeat-8.3.3-linux-armv7l.tar.gz
-cd metricbeat-8.3.3-linux-armv7l
+wget https://github.com/vrince/arm-beats/releases/download/v8.11.4/metricbeat-8.11.4-linux-armv7l.tar.gz
+tar -xf metricbeat-8.11.4-linux-armv7l.tar.gz
+cd metricbeat-8.11.4-linux-armv7l
 file ./metricbeat
 ```
 
@@ -50,8 +50,6 @@ For more information about how to configure `metricbeat` --> [documentation](htt
 ## Builds
 
 [![CI](https://github.com/vrince/arm-beats/actions/workflows/beats.yml/badge.svg)](https://github.com/vrince/arm-beats/actions/workflows/beats.yml)
-
-This automation script uses emulated (`qemu`) multi-arch capability of docker. Performance is really not that great, so we only perform `go get` to build necessary binary file. Finally we patch official elasticsearch  (arm64) beat package swapping the main binary.
 
 ## Reference
 
