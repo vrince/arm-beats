@@ -39,7 +39,7 @@ echo "Building(${BEAT})"
 
 rm -rf "${GOPATH}/bin"
 cd "${SRC}/beats/${BEAT}"
-env GOOS=linux GOARCH=arm go install -v -a ./...
+env GOOS=linux GOARCH=arm CGO_ENABLED=1 go install -v -a ./...
 
 if [[ -z ${TAG} ]] ; then
     ls -al ${GOPATH}/bin/linux_arm/${BEAT}
