@@ -3,7 +3,7 @@
 ![](https://badgen.net/github/release/vrince/arm-beats)
 [![CI](https://github.com/vrince/arm-beats/actions/workflows/beats.yml/badge.svg)](https://github.com/vrince/arm-beats/actions/workflows/beats.yml)
 
-Automated Elastic `filebeat`, `metricbeat`, `heartbeat` & `packagebeat` builds for **linux/armv7 32bits**.
+Automated Elastic `filebeat`, `metricbeat` & `heartbeat` builds for **linux/armv7 32bits**.
 
 ## Goal
 

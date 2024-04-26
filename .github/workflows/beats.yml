@@ -37,7 +37,7 @@ jobs:
         run: ./build.sh ${{ matrix.beat }} ${{ matrix.arch }}
 
       - name: Build beat (master)
-        id: build-beat
+        id: build-beat-master
         if: "!startsWith(github.ref, 'refs/tags/')"
         run: ./build.sh ${{ matrix.beat }} ${{ matrix.arch }} master
 
