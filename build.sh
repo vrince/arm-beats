@@ -3,24 +3,25 @@
 #set -e
 BEAT="${1:-filebeat}"
 ARCH="${2:-armv7l}"
-REF_NAME="${3}"
+BRANCH="${3:-master}"
+TYPE="${4:-branch}"
 
 if [[ -n ${GITHUB_REF_NAME} ]] ; then
     BRANCH=${GITHUB_REF_NAME}
-    echo "Using GITHUB_REF_NAME(${BRANCH})"
+    echo "Using BRANCH(${BRANCH})"
 fi
 
-if [[ -z ${BRANCH} ]] ; then
+if [[ -n ${GITHUB_REF_TYPE} ]] ; then
+    TYPE=${GITHUB_REF_TYPE}
+    echo "Using GITHUB_REF_TYPE(${TYPE})"
+fi
+
+if [[ $TYPE != "tag" ]] ; then
     BRANCH="master"
     echo "Using default branch(${BRANCH})"
 fi
 
-
-GIT_TAG=$(git describe --exact-match --abbrev=0)
-
-echo "Git tag(${GIT_TAG})"
-
-exit 1
+echo "Branch(${BRANCH}) Type(${TYPE})"
 
 VERSION="${BRANCH:1}"
 SRC=$(pwd)
@@ -51,7 +52,8 @@ rm -rf "${GOPATH}/bin"
 cd "${SRC}/beats/${BEAT}"
 env GOOS=linux GOARCH=arm go install -v -a ./...
 
-if [[ -z ${TAG} ]] ; then
+if [[ $TYPE != "tag" ]] ; then
+    #do not packe if not a tag
     ls -al ${GOPATH}/bin/linux_arm/${BEAT}
     exit 0
 fi
