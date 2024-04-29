@@ -50,7 +50,7 @@ echo "Building(${BEAT})"
 
 rm -rf "${GOPATH}/bin"
 cd "${SRC}/beats/${BEAT}"
-env GOOS=linux GOARCH=arm go install -v -a ./...
+env GOOS=linux GOARCH=arm go install -v -a -ldflags "-s -w" ./...
 
 if [[ $TYPE != "tag" ]] ; then
     #do not packe if not a tag
