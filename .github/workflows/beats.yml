@@ -19,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        arch: [armv7]
+        arch: [armv7l]
         beat: [filebeat, metricbeat, heartbeat]
 
     runs-on: ubuntu-latest
